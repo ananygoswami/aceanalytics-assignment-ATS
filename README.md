@@ -5,22 +5,13 @@ This project is a REST API built with Node.js and Express for managing job listi
 ## Table of Contents
 
 *   [Prerequisites](#prerequisites)
-
 *   [Setup](#setup)
-
 *   [Configuration](#configuration)
-*   [Database Setup & Migration](#database-setup--migration)
-
 *   [Configuration](#configuration)
-*
 *   [Running the Application](#running-the-application)
-
     *   [Development Mode](#development-mode)
-
     *   [Production Mode](#production-mode)
-*
 *   [API Documentation](#api-documentation)
-
 *   [Running Tests](#running-tests)
 
 ## Prerequisites
@@ -28,11 +19,7 @@ This project is a REST API built with Node.js and Express for managing job listi
 Before you begin, ensure you have met the following requirements:
 
 *   **Node.js:** Version 18.x or later (Check with `node -v`)
-*
 *   **npm:** Version 9.x or later (Usually comes with Node.js, check with `npm -v`)
-*
-*   **Node.js:** Version 18.x or later (`node -v`)
-*   **npm:** Version 9.x or later (`npm -v`)
 *   **Git:** For cloning the repository
 *   **PostgreSQL:** For running the database
 *   **Redis:** Required for token management
@@ -42,54 +29,24 @@ Before you begin, ensure you have met the following requirements:
 To set up the project locally, follow these steps:
 
 1.  **Clone the repository:**
-1.  **Clone the repository:**
     ```bash
     git clone https://github.com/ananygoswami/aceanalytics-assignment-ATS.git
     cd Assignment_AceAnalytics
-    cd Assignment_AceAnalytics # Or your project directory name
     ```
-
-2.  **Install dependencies:**
 2.  **Install dependencies:**
     ```bash
     npm install
     ```
-
-## Database Setup & Migration
-
-This project uses Prisma for database management and migrations.
-
-1.  **Ensure your database server is running.**
-
-2.  **Configure the database connection URL:**
-    *   Make sure the `DATABASE_URL` environment variable is set correctly in your `.env` file (see Configuration). It should look something like this:
-        ```
-        DATABASE_URL="postgresql://YOUR_DB_USER:YOUR_DB_PASSWORD@YOUR_DB_HOST:YOUR_DB_PORT/YOUR_DB_NAME?schema=public"
-        ```
-
-3.  **Run Migrations:**
-    *   This command applies any pending database schema changes defined in your `prisma/migrations` folder.
-    ```bash
-    npx prisma migrate deploy
-    ```
-    *   *(Optional)* During development, if you make changes to your `prisma/schema.prisma` file, you can create *new* migration files using:
-        ```bash
-        # Make sure your .env file is configured first!
-        npx prisma migrate dev --name your_migration_description
-        ```
-        This will also apply the migration immediately in a development environment.
 
 ## Configuration
 
 The application requires certain environment variables to be set.
 Before proceeding with database migrations or starting the app, set up your environment variables.
 
-1.  Create a `.env` file in the root of the project directory by copying the example file:
 1.  Create a `.env` file in the root directory by copying the example:
     ```bash
     cp .env.example .env
     ```
-2.  Edit the `.env` file and provide the necessary values:
 2.  Edit the `.env` file and fill in your environment-specific values:
     ```dotenv
     # Application Port
@@ -102,17 +59,14 @@ Before proceeding with database migrations or starting the app, set up your envi
     JWT_SECRET=your_very_strong_jwt_secret_key
     JWT_REFRESH_SECRET=your_very_strong_jwt_refresh_secret_key
 
-    # JWT Expiration Times (e.g., 15m, 1h, 7d)
     # JWT Expiration Durations (e.g., 15m, 1h, 7d)
     JWT_EXPIRATION=15m
     JWT_REFRESH_EXPIRATION=7d
 
-    # REDIS URL
     # Redis URL
     REDIS_URL=redis://localhost:6379
     ```
-    ⚠️ Note: Do not commit the `.env` file to version control. Only `.env.example` should be tracked.
-
+    
 ## Database Setup & Migration
 
 This project uses Prisma for database management and migrations.
@@ -137,11 +91,9 @@ This project uses Prisma for database management and migrations.
 
 ## Running the Application
 
- ### Development Mode
- 
--For development, it's common to use a tool like `nodemon` which automatically restarts the server when file changes are detected.
--
-+Run the application in development mode (auto-restarts on file changes):
+### Development Mode
+
+Run the application in development mode using `nodemon`, which automatically restarts the server when file changes are detected:
  ```bash
  npm run dev
 ```
@@ -150,7 +102,7 @@ This typically runs `nodemon app.js` or a similar command defined in your `packa
 ### Production Mode
 
 For production, you should run the application directly using Node.js. Ensure all dependencies are installed (`npm install --production` might be used in a build step).
-
+Consider using a process manager like PM2 for better management in production.
 ```bash
 npm start
 ```
@@ -161,4 +113,8 @@ This typically runs `node app.js` as defined in your `package.json`. Make sure y
 *   Interactive API documentation (Swagger UI) is available at: `http://localhost:3001/api-docs` (when the server is running).
 *   The OpenAPI specification file can be found at: `openapi.json` (if generated and saved).
 *   A Postman collection for testing might be available at: `postman/collection.postman_collection.json` (if created).
+
+## Running Tests
+
+*(Add instructions on how to run automated tests here, e.g., `npm test`)*
 ---
