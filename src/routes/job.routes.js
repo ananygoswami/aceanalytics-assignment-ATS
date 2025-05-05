@@ -23,10 +23,10 @@ const USER_ROLES = require('../constants/roles');
  *       - bearerAuth: [] # Indicates this endpoint requires authentication
  *     parameters:
  *       - in: query
- *         name: title
+ *         name: search
  *         schema:
  *           type: string
- *         description: Filter jobs by title (partial match)
+ *         description: Filter jobs by searchtial match)
  *       - in: query
  *         name: location
  *         schema:
@@ -119,7 +119,7 @@ router.get('/:id', authenticate, checkRole([USER_ROLES.ADMIN, USER_ROLES.CANDIDA
  *           schema:
  *             type: object
  *             required:
- *               - title
+ *               - search
  *               - description
  *               - location
  *             properties:
@@ -132,9 +132,6 @@ router.get('/:id', authenticate, checkRole([USER_ROLES.ADMIN, USER_ROLES.CANDIDA
  *               location:
  *                 type: string
  *                 example: Remote
- *               companyName:
- *                 type: string
- *                 example: Ace Analytics Inc.
  *               salaryRange:
  *                 type: string
  *                 example: $100,000 - $130,000
@@ -175,6 +172,5 @@ router.post(
  *           type: string
  *         description:
  *           type: string
- *         # Add other job properties here (location, companyName, salaryRange, createdAt, updatedAt etc.)
  */
 module.exports = router; 

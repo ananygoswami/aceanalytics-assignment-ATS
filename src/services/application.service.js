@@ -122,7 +122,7 @@ const getAllApplication = async ({page, limit, job_id, status, userId, userRole}
 const buildWhereClause = ({ job_id, status, userId, userRole }) => {
   const filter = [];
   if (job_id) {
-    filter.push({ jobId: job_id });
+    filter.push({ jobId: parseInt(job_id) });
   }
 
   if (status) {

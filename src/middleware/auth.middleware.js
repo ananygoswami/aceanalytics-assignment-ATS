@@ -5,7 +5,7 @@ const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization;
     
     if (!authHeader) {
-      return res.status(401).json({ error: 'Authorization header is required' });
+      return res.status(401).json({ error: 'Please Log In' });
     }
 
     const [bearer, token] = authHeader.split(' ');

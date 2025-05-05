@@ -27,7 +27,7 @@ const listAllApplicationsSchema = Joi.object({
   page: Joi.number().min(1).default(1),
   limit: Joi.number().min(1).max(100).default(10),
   job_id: Joi.string().allow('').default(''),
-  status: Joi.string().allow('').default('')
+  status: Joi.string().valid('Applied','Short_listed', 'Interviewing', 'Offered', 'Hired', 'Rejected').allow('').default('')
 });
 
 const validateListAllApplications = (data) => {

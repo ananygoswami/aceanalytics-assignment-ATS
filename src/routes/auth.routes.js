@@ -30,12 +30,12 @@ const { validateLogin, validateRefreshToken, validateSignup } = require('../midd
  *                 type: string
  *                 format: email
  *                 description: User's email address.
- *                 example: user@example.com
+ *                 example: admin@gmail.com
  *               password:
  *                 type: string
  *                 format: password
  *                 description: User's password.
- *                 example: StrongP@ssw0rd!
+ *                 example: admin123
  *     responses:
  *       200:
  *         description: Login successful, returns access and refresh tokens.
@@ -75,7 +75,6 @@ router.post('/login', validateLogin, authController.login);
  *               - email
  *               - password
  *               - name
- *               - role
  *             properties:
  *               email:
  *                 type: string
@@ -91,11 +90,6 @@ router.post('/login', validateLogin, authController.login);
  *                 type: string
  *                 description: User's full name.
  *                 example: John Doe
- *               role:
- *                 type: string
- *                 enum: [ADMIN, CANDIDATE] # Adjust based on your USER_ROLES constant
- *                 description: The role of the user.
- *                 example: CANDIDATE
  *     responses:
  *       201:
  *         description: User created successfully.

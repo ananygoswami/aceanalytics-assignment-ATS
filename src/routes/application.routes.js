@@ -29,17 +29,11 @@ const USER_ROLES = require('../constants/roles');
  *             type: object
  *             required:
  *               - jobId
- *               - coverLetter
  *             properties:
  *               jobId:
  *                 type: integer # Or string
  *                 description: The ID of the job being applied for.
  *                 example: 5
- *               coverLetter:
- *                 type: string
- *                 description: The candidate's cover letter text.
- *                 example: I am very interested in this position...
- *               # Add other fields if needed, like resume link/ID
  *     responses:
  *       201:
  *         description: Application submitted successfully.
@@ -101,7 +95,7 @@ router.post(
  *             properties:
  *               status:
  *                 type: string
- *                 enum: [PENDING, REVIEWED, INTERVIEWING, OFFERED, REJECTED] # Adjust based on your actual statuses
+ *                 enum: [Short_listed, Interviewing, Offered, Hired, Rejected]
  *                 description: The new status for the application.
  *                 example: REVIEWED
  *     responses:
@@ -134,36 +128,39 @@ router.patch('/:id', authenticate, checkRole([USER_ROLES.ADMIN]), validateUpdate
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: jobId
+ *         name: job_id
  *         schema:
- *           type: integer # Or string
+ *           type: string
+ *           default: ''
  *         description: Filter applications by Job ID (Admin only).
  *       - in: query
  *         name: status
  *         schema:
  *           type: string
- *           enum: [PENDING, REVIEWED, INTERVIEWING, OFFERED, REJECTED] # Adjust based on your actual statuses
+ *           enum: [Applied, Short_listed, Interviewing, Offered, Hired, Rejected]
+ *           default: ''
  *         description: Filter applications by status.
  *       - in: query
  *         name: page
  *         schema:
  *           type: integer
+ *           minimum: 1
  *           default: 1
- *         description: Page number for pagination
+ *         description: Page number for pagination.
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
+ *           minimum: 1
+ *           maximum: 100
  *           default: 10
- *         description: Number of results per page
+ *         description: Number of results per page.
  *     responses:
  *       200:
  *         description: A list of applications.
  *         content:
  *           application/json:
  *             schema:
- *               # Define response structure similar to GET /jobs (with pagination)
- *               # but items should reference '#/components/schemas/Application'
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Application'
@@ -187,15 +184,13 @@ router.get('/', authenticate, checkRole([USER_ROLES.CANDIDATE, USER_ROLES.ADMIN]
  *       properties:
  *         id:
  *           type: integer
- *         jobId:
+ *         job_id:
  *           type: integer
  *         candidateId:
  *           type: integer
  *         status:
  *           type: string
- *           enum: [PENDING, REVIEWED, INTERVIEWING, OFFERED, REJECTED]
- *         coverLetter:
- *           type: string
+ *           enum: [Applied, Short_listed, Interviewing, Offered, Hired, Rejected]
  *         # Add other application properties (appliedAt, updatedAt etc.)
  *         # You might want nested Job and Candidate details here too
  */
