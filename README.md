@@ -84,12 +84,17 @@ This project uses Prisma for database management and migrations.
     npx prisma migrate dev --name descriptive_migration_name
     ```
 
-4.  **(Optional)** If needed, generate the Prisma client again:
+4.  **(Optional)** If needed, generate the Prisma client again, This will generate an ER diagram named ERD.png in /prisma directory:
     ```bash
     npx prisma generate
     ```
 
 ## Running the Application
+
+Create Admin Script (This will create an admin user with email = admin@gmail.com and password = admin123):
+``` bash
+node create_admin/create.js
+```
 
 ### Development Mode
 
