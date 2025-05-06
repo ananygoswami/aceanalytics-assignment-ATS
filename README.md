@@ -18,7 +18,7 @@ This project is a REST API built with Node.js and Express for managing job listi
 
 Before you begin, ensure you have met the following requirements:
 
-*   **Node.js:** Version 18.x or later (Check with `node -v`)
+*   **Node.js:** Version 18.18.x or later (Check with `node -v`)
 *   **npm:** Version 9.x or later (Usually comes with Node.js, check with `npm -v`)
 *   **Git:** For cloning the repository
 *   **PostgreSQL:** For running the database

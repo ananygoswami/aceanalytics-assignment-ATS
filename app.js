@@ -10,27 +10,25 @@ app.use(express.json());
 
 app.use('/api', routes);
 
-// --- Swagger Setup ---
 const options = {
   definition: {
-    openapi: '3.0.0', // Specify OpenAPI version
+    openapi: '3.0.0',
     info: {
-      title: 'AceAnalytics ATS API', // Your API Title
-      version: '1.0.0', // Your API version
-      description: 'API documentation for the AceAnalytics assignment project', // Your API description
+      title: 'AceAnalytics ATS API',
+      version: '1.0.0',
+      description: 'API documentation for the AceAnalytics assignment project',
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 3001}/api`, // Adjust if your base URL is different
+        url: `http://localhost:${process.env.PORT || 3001}/api`,
       },
     ],
-    // Add components section for security definitions
     components: {
       securitySchemes: {
-        bearerAuth: { // Can be any name, used to refer to this scheme
+        bearerAuth: {
           type: 'http',
           scheme: 'bearer',
-          bearerFormat: 'JWT', // Optional, specifies format is JWT
+          bearerFormat: 'JWT',
         },
       },
     },
