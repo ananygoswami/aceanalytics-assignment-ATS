@@ -119,7 +119,11 @@ This typically runs `node app.js` as defined in your `package.json`. Make sure y
 *   The OpenAPI specification file can be found at: `openapi.json` (if generated and saved).
 *   A Postman collection for testing might be available at: `postman/collection.postman_collection.json` (if created).
 
-## Running Tests
+## Design Decisions
 
-*(Add instructions on how to run automated tests here, e.g., `npm test`)*
+* The schema cleanly separates user roles by associating candidates with extended profile data, enabling flexible user management and job application tracking. It ensures referential integrity and supports a structured recruitment workflow through enums for role and application status.
+* Candidate profile flow: There is a Candidate profile flow, which each candidate must complete before submitting any application, for now candidate profile only contains resume url and other important fields, I kept the candidate profile saperate from user table as an option for future flow having multiple roles like Interviewer or HR etc. Canditate profile table has a user refrence relation which can be utilised later and seen in the prisma schema.
+
+## Time Spent
+* I spent around 12-16 hours on this project, worked few hours every day, I was assigned the project on Thursday 1st of may 2025 and I started working on it from staurday 3rd of may 2025.
 ---
